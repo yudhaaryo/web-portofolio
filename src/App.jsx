@@ -5,18 +5,32 @@ import About from "./assets/components/About";
 import Portofolio from "./assets/components/Portofolio";
 import Experience from "./assets/components/Experience";
 import Contact from "./assets/components/Contact";
+import Tech from "./assets/components/Tech";
+import PortoPage from "./assets/components/PortoPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
-      <Home />
-      <About />
-      <SocialLink />
-      <Portofolio />
-      <Experience />
-      <Contact />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Tech />
+              <About />
+              <SocialLink />
+              <Portofolio />
+              <Experience />
+              <Contact />
+            </>
+          }
+        />
+        <Route path="/porto" element={<PortoPage />} />
+      </Routes>
+    </Router>
   );
 }
 

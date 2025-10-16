@@ -1,34 +1,52 @@
-import React from "react";
+const experiences = [
+  {
+    year: "2024",
+    role: "Frontend Developer",
+    place: "Universitas Negeri Yogyakarta",
+    desc: "Membangun sistem pendukung keputusan rotasi pekerjaan dengan React + PHP.",
+  },
+  {
+    year: "2024",
+    role: "Frontend Developer",
+    place: "Infinite Learning",
+    desc: "Membuat website micro project pelaporan bullying dengan React + Tailwind.",
+  },
+  {
+    year: "2025",
+    role: "Fullstack Developer",
+    place: "SMKN 3 Yogyakarta",
+    desc: "Mengembangkan website inventarisasi & peminjaman alat laboratorium (Laravel + Filament).",
+  },
+];
 
 const Experience = () => {
   return (
     <div
-      name="about"
-      className="w-full h-screen  bg-gradient-to-b from-black via-black to-gray-900 text-white"
+      name="experience"
+      className="w-full bg-gradient-to-b from-black to-gray-900 text-white py-16"
     >
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
-        <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4">Experience</p>
+      <div className="max-w-screen-lg mx-auto p-4">
+        <h2 className="text-4xl font-bold border-b-4 border-cyan-400 inline-block mb-12">
+          Experience
+        </h2>
+
+        <div className="relative border-l border-gray-600">
+          {experiences.map((exp, index) => (
+            <div key={index} className="mb-10 ml-6">
+              {/* Bullet */}
+              <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-cyan-400 rounded-full ring-8 ring-black"></span>
+
+              {/* Content */}
+              <div className="bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-cyan-500/30 transition">
+                <h3 className="text-xl font-bold">{exp.role}</h3>
+                <p className="text-gray-400 italic">
+                  {exp.place} — {exp.year}
+                </p>
+                <p className="mt-2 text-gray-200">{exp.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <p className="text-xl mt-14">
-          Saya memiliki pengalaman yang beragam dalam pengembangan perangkat
-          lunak. Dalam pengembangan web, saya memiliki pengetahuan dalam
-          menggunakan React JS sebagai framework JavaScript. Selain itu, saya
-          terampil dalam menggunakan berbagai teknologi dan platform, mulai dari
-          Tailwind CSS untuk styling hingga HTML sebagai bahasa markup dasar.
-          Kemampuan saya juga mencakup penggunaan Laravel sebagai framework
-          untuk pengembangan web, memungkinkan saya untuk membangun aplikasi web
-          dengan cepat dan efisien.
-        </p>
-        <br />
-        <p className="text-xl">
-          Di sisi desain, saya telah mendalami Figma untuk merancang antarmuka
-          pengguna yang menarik dan intuitif. Selain itu, saya telah
-          mengembangkan aplikasi menggunakan Android Studio, yang memperluas
-          wawasan saya dalam pengembangan mobile. Saya juga telah aktif dalam
-          mengelola proyek-proyek pengembangan perangkat lunak menggunakan
-          GitHub.
-        </p>
       </div>
     </div>
   );

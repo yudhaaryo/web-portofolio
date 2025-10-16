@@ -1,10 +1,11 @@
 import React from "react";
 import kepegawaianImage from "../img/Kepegawaian.png";
 import adolImage from "../img/adol.png";
-import dwImage from "../img/DW.png";
+import agunaImage from "../img/aguna.png";
 import beraninImage from "../img/bernaIn.png";
 import stafnewImage from "../img/stafnew.png";
-import labaImage from "../img/laba.png";
+import simpaImage from "../img/simpa.png";
+import { Link } from "react-router-dom";
 
 const Portofolio = () => {
   const portofolios = [
@@ -18,7 +19,7 @@ const Portofolio = () => {
       id: 2,
       src: adolImage,
       title:
-        "Banner Design, Research, E-commerce untuk UMKM di Universitas Negeri Yogyakarta",
+        "Graphic Design, Research, E-commerce untuk UMKM di Universitas Negeri Yogyakarta",
     },
     {
       id: 3,
@@ -34,41 +35,52 @@ const Portofolio = () => {
     },
     {
       id: 5,
-      src: dwImage,
-      title: "Front-end, Web LMS sebagai tugas akhir matkul design web",
+      src: agunaImage,
+      title: "Front-end, Massive Project Web AgunaEdu",
     },
     {
       id: 6,
-      src: labaImage,
-      title: "Fullstack, Aplikasi android untuk mencari teman berolahraga",
+      src: simpaImage,
+      title: "Fullstack, Website inventarisasi & peminjaman alat laboratorium",
     },
   ];
 
   return (
     <div
       name="portofolio"
-      className="bg-gradient-to-b from-black to-gray-800 w-full text-white md:h-screen"
+      className="bg-gradient-to-b from-black to-gray-900 w-full text-white py-16"
     >
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
-        <div className="pb-8">
-          <p className="text-4xl border-gray-500 inline border-b-4">
+      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full">
+        <div className="pb-12 text-center">
+          <p className="text-4xl font-bold inline border-b-4 border-cyan-400">
             Portofolio
           </p>
-          <p className="py-6">Cek Lainnya Disini</p>
+          {/* <p className="py-4 text-gray-300">
+            <Link to="/porto">✨ Cek Karya Lainnya Disini</Link>
+          </p> */}
         </div>
 
-        <div
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-8
-px-12 sm:px-0"
-        >
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 px-4 sm:px-0">
           {portofolios.map(({ id, src, title }) => (
-            <div key={id} className="shadow-md shadow-gray-600">
+            <div
+              key={id}
+              className="relative group shadow-lg shadow-gray-700 rounded-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-cyan-500/40"
+            >
               <img
                 src={src}
                 alt=""
-                className="rounded-tl-lg rounded-tr-lg rounded-t-none duration-200 hover:scale-105"
+                className="rounded-xl w-full object-cover group-hover:scale-110 transition duration-300"
               />
-              <p className="text-center py-2">{title} </p>
+
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+                <p className="text-center px-3 text-sm font-semibold text-white">
+                  {title}
+                </p>
+              </div>
+
+              <p className="text-center py-3 text-gray-200 text-sm bg-gray-800 group-hover:hidden">
+                {title}
+              </p>
             </div>
           ))}
         </div>
