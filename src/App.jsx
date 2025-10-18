@@ -7,12 +7,14 @@ import Experience from "./assets/components/Experience";
 import Contact from "./assets/components/Contact";
 import Tech from "./assets/components/Tech";
 import PortoPage from "./assets/components/PortoPage";
+import ProjectDetail from "./assets/components/ProjectDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <Navbar />
+
       <Routes>
         <Route
           path="/"
@@ -28,7 +30,10 @@ function App() {
             </>
           }
         />
+
         <Route path="/porto" element={<PortoPage />} />
+
+        <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </Router>
   );

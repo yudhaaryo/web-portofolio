@@ -8,19 +8,17 @@ const Navbar = () => {
   const links = [
     { id: 1, link: "home" },
     { id: 2, link: "about" },
-    { id: 3, link: "portfolio" },
+    { id: 3, link: "portofolio" },
     { id: 4, link: "experience" },
     { id: 5, link: "contact" },
   ];
 
   return (
     <div className="flex justify-between items-center w-full h-20 text-white bg-black px-6 fixed z-50 shadow-md">
-      {/* Logo */}
       <h1 className="text-4xl font-signature cursor-pointer select-none">
         Yudha
       </h1>
 
-      {/* Menu Desktop */}
       <ul className="hidden md:flex">
         {links.map(({ id, link }) => (
           <li
@@ -34,7 +32,6 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {/* Icon Mobile */}
       <div
         onClick={() => setNav(!nav)}
         className="cursor-pointer pr-4 z-10 text-gray-400 md:hidden"
@@ -42,7 +39,6 @@ const Navbar = () => {
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
 
-      {/* Menu Mobile */}
       {nav && (
         <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-900 text-gray-400">
           {links.map(({ id, link }) => (

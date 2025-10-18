@@ -33,10 +33,8 @@ const Experience = () => {
         <div className="relative border-l border-gray-600">
           {experiences.map((exp, index) => (
             <div key={index} className="mb-10 ml-6">
-              {/* Bullet */}
               <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-cyan-400 rounded-full ring-8 ring-black"></span>
 
-              {/* Content */}
               <div className="bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-cyan-500/30 transition">
                 <h3 className="text-xl font-bold">{exp.role}</h3>
                 <p className="text-gray-400 italic">

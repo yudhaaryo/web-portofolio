@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import kepegawaianImage from "../img/Kepegawaian.png";
 import adolImage from "../img/adol.png";
 import agunaImage from "../img/aguna.png";
@@ -55,64 +55,45 @@ const projects = [
   },
 ];
 
-const PortoPage = () => {
+const ProjectDetail = () => {
+  const { id } = useParams();
+  const project = projects.find((p) => p.id === parseInt(id));
+
+  if (!project)
+    return (
+      <div className="text-center py-20 text-white">Project not found 😢</div>
+    );
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-20">
-      <div className="max-w-screen-lg mx-auto text-center">
-        <h1 className="text-4xl font-bold mb-8 border-b-4 border-cyan-400 inline-block pb-2">
-          Latest Projects & Case Studies
-        </h1>
+    <div className="min-h-screen w-full bg-gradient-to-b from-black to-gray-900 text-white py-20 px-6">
+      <div className="max-w-3xl mx-auto text-center">
+        <img
+          src={project.src}
+          alt={project.title}
+          className="w-full rounded-xl shadow-lg mb-8"
+        />
+        <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+        <p className="text-gray-300 mb-6">{project.desc}</p>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 mt-12 px-4">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:scale-105 transition-transform duration-300"
-            >
-              <img
-                src={project.src}
-                alt={project.title}
-                className="w-full h-48 object-cover group-hover:opacity-90 transition"
-              />
-
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2 text-cyan-400">
-                  {project.title}
-                </h2>
-                <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                  {project.desc}
-                </p>
-
-                <div className="flex justify-center gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-cyan-600 rounded-md hover:bg-cyan-700 transition"
-                  >
-                    GitHub
-                  </a>
-                  <Link
-                    to={`/project/${project.id}`}
-                    className="px-4 py-2 bg-gray-700 rounded-md hover:bg-gray-600 transition"
-                  >
-                    Detail
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="flex justify-center gap-6">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-cyan-500 rounded-lg hover:bg-cyan-600 transition"
+          >
+            🔗 View on GitHub
+          </a>
+          <Link
+            to="/"
+            className="px-6 py-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+          >
+            ⬅ Back
+          </Link>
         </div>
-
-        <Link
-          to="/"
-          className="inline-block mt-10 text-gray-400 hover:text-cyan-400 transition"
-        >
-          ⬅ Kembali ke Beranda
-        </Link>
       </div>
     </div>
   );
 };
 
-export default PortoPage;
+export default ProjectDetail;
